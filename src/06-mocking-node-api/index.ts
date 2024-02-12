@@ -1,12 +1,12 @@
 import { existsSync } from 'fs';
-import { readFile } from 'fs/promises';
 import { join } from 'path';
+import * as fs from 'fs';
 
 export const readFileAsynchronously = async (pathToFile: string) => {
   const fullPath = join(__dirname, pathToFile);
 
   if (existsSync(fullPath)) {
-    const fileContent = await readFile(fullPath);
+    const fileContent = await fs.promises.readFile(fullPath);
     return fileContent.toString();
   }
 
